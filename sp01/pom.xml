@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.yedam</groupId>
 	<artifactId>app</artifactId>
-	<name>demo00</name>
+	<name>sp01</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -97,7 +97,6 @@
 		    <version>3.1.0</version>
 		    <scope>provided</scope>
 		</dependency>
-		
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
@@ -109,19 +108,22 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+	
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 			<scope>test</scope>
-		</dependency>        
+		</dependency>
+		<!-- 교체 -->
 		<!-- spring-test -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		
 		<!-- lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -129,12 +131,15 @@
 			<version>1.18.24</version>
 			<scope>provided</scope>
 		</dependency>
+		
 		<!-- jackson -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.13.2.2</version>
-		</dependency>
+		</dependency> 
+		<!-- 커넥션 풀 설정 -->
+		
 		<!-- Database connection pool -->
 		<dependency>
 			<groupId>com.zaxxer</groupId>
@@ -154,7 +159,10 @@
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
 			<version>19.3.0.0</version>
-		</dependency>
+		</dependency>       
+		
+		<!-- mybatis 설정-->
+		
 		<!-- mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -167,16 +175,15 @@
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>2.0.6</version>
-		</dependency>
+		</dependency>		
 		
-		<!-- log4jdbc-log4j2 라이브러리 추가 -->	
+		<!-- sql로그  -->
 		<dependency>
 		  <groupId>org.bgee.log4jdbc-log4j2</groupId>
 		  <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
 		  <version>1.16</version>
 		</dependency>
 	</dependencies>
-	
     <build>
         <plugins>
             <plugin>
