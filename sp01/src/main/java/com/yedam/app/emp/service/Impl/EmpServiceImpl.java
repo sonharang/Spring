@@ -37,15 +37,25 @@ public class EmpServiceImpl implements EmpService {
 		}
 	}
 
-//	@Override
-//	public Map<String, Object> updateEmpInfo(EmpVO empVO) {
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		return map;
-//	}
+	@Override
+	public Map<String, Object> updateEmpInfo(EmpVO empVO) {
+		Map<String, Object> map = new HashMap<>();
+		boolean isSuccessed = false;
+		int result = empMapper.updateEmpInfo(empVO);
+		if(result == 1) {
+			isSuccessed = true;
+		}
+		map.put("result", isSuccessed);
+		map.put("target", empVO); //실행할때 사용할 대상
+		//정보 더 넘기고 싶으면 put으로 계속 추가 가능
+		return map;
+	}
 
 	@Override
 	public boolean deleteEmpInfo(int empId) {
-		return false;
+		int result = empMapper.deleteEmpInfo(empId);
+		
+		return result == 1 ? true : false; //삼항 연산자
 	}
 
 }
