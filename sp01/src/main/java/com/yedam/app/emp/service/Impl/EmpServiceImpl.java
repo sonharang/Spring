@@ -37,11 +37,11 @@ public class EmpServiceImpl implements EmpService {
 		}
 	}
 
-	@Override
-	public Map<String, Object> updateEmpInfo(EmpVO empVO) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		return map;
-	}
+//	@Override
+//	public Map<String, Object> updateEmpInfo(EmpVO empVO) {
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		return map;
+//	}
 
 	@Override
 	public boolean deleteEmpInfo(int empId) {
