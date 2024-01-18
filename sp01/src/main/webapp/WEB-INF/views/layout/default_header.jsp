@@ -13,6 +13,8 @@
           <li><a href="/app/empInsert" class="nav-link px-2 text-white">사원정보등록</a></li> 
           <li><a href="${pageContext.request.contextPath }/empList" class="nav-link px-2 text-white">전체사원조회(contextPath)</a></li>
           <li><a href="${pageContext.request.contextPath }/empInsert" class="nav-link px-2 text-white">사원정보등록(contextPath)</a></li> 
+          <li><a href="${pageContext.request.contextPath }/boardList" class="nav-link px-2 text-white">board조회(contextPath)</a></li> 
+          <li><a href="${pageContext.request.contextPath }/boardInsert" class="nav-link px-2 text-white">board등록(contextPath)</a></li> 
         </ul>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
