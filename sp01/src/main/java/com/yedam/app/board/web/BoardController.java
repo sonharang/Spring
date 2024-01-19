@@ -61,20 +61,40 @@ public class BoardController {
 		boardService.insertBoardInfo(boardVO);
 		return "redirect:boardList";
 	}
-	//board수정 - PROCESS : Ajax -> 무조건 @ResponseBody 사용				페이지	uri - boardUpdate/ return - board/boardUpdate / parameter - BoardVO
-	//1) queryString 방식 -> 커맨드 객체
-	@PostMapping("boardUpdate")
-	@ResponseBody
-	public Map<String, Object> boardUpdateProcess(BoardVO boardVO){
-		return boardService.updateBoardInfo(boardVO);
-	}	
-	//2) Json 방식 -> @RequestBody										처리		uri - boardUpdate/ return - 수정결과 데이터(Map) / parameter - BoardVO
-	@PostMapping("boardUpdateAjax")
-	@ResponseBody
-	public Map<String, Object> boardUpdateAjaxProcess(@RequestBody BoardVO boardVO){
-		return boardService.updateBoardInfo(boardVO);
-	}	
+
+	/*
+	 * //board수정 - PROCESS : Ajax -> 무조건 @ResponseBody 사용 페이지 uri - boardUpdate/ return - board/boardUpdate / parameter - BoardVO 
+	 * //1) queryString 방식 -> 커맨드객체
+	 * 
+	 * @PostMapping("boardUpdate")
+	 * 
+	 * @ResponseBody public Map<String, Object> boardUpdateProcess(BoardVO boardVO){
+	 * return boardService.updateBoardInfo(boardVO); }
+	 * 
+	 *  //2) Json 방식 -> @RequestBody 처리 uri - boardUpdate/ return - 수정결과 데이터(Map) / parameter - BoardVO
+	 * 
+	 * @PostMapping("boardUpdateAjax")
+	 * 
+	 * @ResponseBody public Map<String, Object> boardUpdateAjaxProcess(@RequestBody
+	 * BoardVO boardVO){ return boardService.updateBoardInfo(boardVO); }
+	 */
 	
+	//수정 - 페이지 단건조회 사용해서 작업
+		@GetMapping("boardUpdate")
+		public String boardUpdate(BoardVO boardVO, Model model) {
+			BoardVO findVO = boardService.getBoardInfo(boardVO);
+			model.addAttribute("boardInfo", findVO);
+			return "board/boardUpdate2";
+		}
+	//수정 -처리 Ajax
+		@PostMapping("boardUpdate")
+		@ResponseBody
+		public Map boardUpdateAjaxProcess(BoardVO boardVO, Model model) {
+			return boardService.updateBoardInfo(boardVO);
+		}
+		
+		
+		
 	//board삭제 - PROCESS
 	//get 방식
 	@GetMapping("boardDelete")

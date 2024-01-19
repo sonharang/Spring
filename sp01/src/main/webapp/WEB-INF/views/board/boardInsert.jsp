@@ -72,7 +72,7 @@
 					//이벤트 지우기
 					document.querySelector('form[name="insertForm"]')
 							.removeEventListener('submit', boardInsertJs);
-							alert('event has been removed');
+							/* alert('event has been removed'); */
 					
 					
 					//jQuery

@@ -12,51 +12,45 @@
 <body>
 		<form action="">
 			<div>
-			<h1>게시글 조회</h1>
+			<h1>게시글 수정1</h1>
 			<br/>
 			<table>
 				<tr>
 					<th>번호</th>
-					<%-- <td><input type="number" name="bno" value="${boardInfo.bno }"></td> --%>
-					<td>${boardInfo.bno }</td>
+					 <td><input type="number" name="bno" value="${boardInfo.bno }" readonly></td> 
+					
 				</tr>
 				<tr>
 					<th>제목</th>
-					<%-- <td><input type="text" name="title" value="${boardInfo.title }"></td> --%>
-					<td>${boardInfo.title }</td>
+					 <td><input type="text" name="title" value="${boardInfo.title }"></td> 
+					
 				</tr>
 				<tr>
 					<th>내용</th>
-					<%-- <td><input type="text" name="contents" value="${boardInfo.contents }"></td> --%>
-					<td><textarea rows="2" cols="3" style="width: 100px" readonly> ${boardInfo.contents }</textarea></td>
+					 <td><input type="text" name="contents" value="${boardInfo.contents }"></td> 
+					
 				</tr>
 				<tr>
 					<th>작성자</th>
-					<%-- <td><input type="text" name="writer" value="${boardInfo.writer }"></td> --%>
-					<td>${boardInfo.writer }</td>
-				</tr>
-				<tr>
-					<th>작성일</th>
-					<%-- <td><input type="date" name="regdate" value='<fmt:formatDate value="${boardInfo.regdate}"  pattern="yyyy-MM-dd"/>'></td> --%>
-					<td><fmt:formatDate value="${boardInfo.regdate}"  pattern="yyyy-MM-dd"/></td>
+					 <td><input type="text" name="writer" value="${boardInfo.writer }"></td> 
+					
 				</tr>
 				<tr>
 					<th>이미지</th>
-					<%-- <td><input type="text" name="image" value="${boardInfo.image }"></td> --%>
-					<td><img style="width:200px" src="<c:url value="/resources/${boardInfo.image }" />"></td>
+					 <td><input type="text" name="image" value="${boardInfo.image }"></td>
+					
 				</tr>
 				</table>
 			</div>
 				<br>
 			<div>
 				<button type="button" onclick="location.href='boardList'">목록으로</button>
-				<button type="button" onclick="location.href='boardUpdate?bno=${boardInfo.bno}'" >수정</button>
+				<button type="button" id="updateBtn" >수정</button> 
 				<button type="button" onclick="location.href='boardDelete?bno=${boardInfo.bno}'">삭제</button>
-				<!-- <button type="button" id="updateBtn" >수정</button> -->
 			</div>
 		</form>
 		<script>
-			/* document.querySelector('#updateBtn')
+			document.querySelector('#updateBtn')
 					.addEventListener('click', updateBoardInfo);
 			function updateBoardInfo(event){
 			//form 태그 내부의 입력태그를 기반으로 정보를 가져옴
@@ -86,7 +80,7 @@
 					console.log('JSON', result);
 				})
 				.catch(err => console.log(err));
-			} */
+			}
 			
 			
 			function getBoardInfo(){

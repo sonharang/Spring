@@ -14,11 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.yedam.app.aop.service.AaaService;
 import com.yedam.app.emp.mapper.EmpMapper;
 import com.yedam.app.emp.service.EmpVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/spring/*-context.xml")
+@ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/spring/**/*-context.xml")
 public class MapperTest {
 	
 	@Autowired
@@ -81,6 +82,14 @@ public class MapperTest {
 	public void deleteInfo() {
 		int result = empMapper.deleteEmpInfo(207);
 		assertNotEquals(result, 0);
+	}
+	
+	@Autowired
+	AaaService aaaService;
+	
+	//@Test 
+	public void aopTest() {
+		aaaService.insert();
 	}
 	
 }
