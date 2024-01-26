@@ -1,28 +1,69 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layout}"
+	  xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>empList.html</title>
+<style>
+.odd{
+	background-color: yellowgreen;
+}
+.even{
+	background-color: gold;
+}
+.trbold{
+	font-weight: bold;
+	color: white;
+}
+</style>
 </head>
 
 <body>
+<section layout:fragment="content">
 <div>전체건수 : [[${#lists.size(list)}  ]]</div>
 <div th:text="${#lists.size(list)}"></div>
 <table>
  <tr>
  <th>No.</th>
  <th>employee_id</th>
- <th>first_name</th>
- <th>last_name</th>
+ <th>name</th>
+ <th>name</th>
  <th>hire_date</th>
+ <th>salary</th>
+ <th>grade</th>
  </tr>
-<tr th:each="emp : ${list}">
- <td th:text="${empStat.count}"></td>
- <td th:text="${emp.employeeId}"></td>
- <td th:text="${emp.firstName}"></td>
- <td th:text="${emp.lastName}"></td>
- <td th:text="${emp.hireDate}"></td>
- </tr>
+ <th:block th:each="emp : ${list}"> 
+	<tr th:class="${empStat.odd} ? 'odd':'even' " th:classappend="${empStat.first} ? 'trbold'">
+	 <td th:text="${empStat.count}">1</td>
+	 <td><a th:href="@{info.do(employeeId=${emp.employeeId}, name=${emp.firstName})}" 
+	 	th:text="${emp.employeeId}"></a></td>
+	 <td th:text="|${emp.firstName}, ${emp.lastName}|">hong, gildong</td>
+	 <td th:text="${emp.firstName} + ', ' + ${emp.lastName}">hong, gildong</td>
+	 <td th:text="${#dates.format(emp.hireDate, 'yyyy-MM-dd')}">2024-01-01</td>
+	 <td th:text="${emp.salary}">1000</td>
+	 <td th:if="${emp.salary}>10000" th:text="A">1000</td>
+	 <td th:unless="${emp.salary}>10000" th:text="B">2000</td>
+	 </tr>
+ </th:block>
 </table>
+<br>
+<!--/* <th:block th:each="emp : ${list}">
+	<span th:text="${emp.firstName}"></span>
+	<span th:text="${emp.lastName}"></span>
+	<br>
+</th:block> */-->
+
+<div th:text="'<b>test</b>'"></div>
+<div th:utext="'<b>test</b>'"></div>
+<div>[[${list[0].firstName}]]</div>
+<div>[(${list[0].firstName})]</div>
+
+<div class="divfooter" th:insert="~{footer}"></div>
+<div class="divfooter" th:insert="~{footer :: company}"></div>
+<div class="divfooter" th:replace="~{footer :: copy}"></div>
+
+<script th:inline="javascript">let emps = [[${list}]]</script>
+</section>
 </body>
 </html>
